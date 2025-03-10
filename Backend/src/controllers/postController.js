@@ -15,13 +15,22 @@ export const createPost = async (req, res) => {
 
 // Get all posts
 export const getPosts = async (req, res) => {
+  const { page = 1, limit = 6 } = req.query;
   try {
-    const posts = await Post.find().populate('author', 'username email');
-    res.json(posts);
+    const totalPosts = await Post.countDocuments();
+    const posts = await Post.find()
+      .skip((page - 1) * limit)  // Skip posts based on the current page
+      .limit(Number(limit))// Limit the number of posts per page
+      .populate('author', 'username email') ;  
+
+    const totalPages = Math.ceil(totalPosts / limit);
+
+    res.json({ posts, totalPages });
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching posts', error });
+    res.status(500).json({ message: "Error fetching posts." });
   }
 };
+
 
 // Get a single post by ID
 export const getPostById = async (req, res) => {
@@ -71,5 +80,25 @@ export const deletePost = async (req, res) => {
     res.json({ message: 'Post deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: 'Error deleting post', error });
+  }
+}
+// Like a post
+export const likePost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (!post) return res.status(404).json({ message: 'Post not found' });
+
+    // Check if the user has already liked the post
+    if (post.likes.includes(req.user.userId)) {
+      return res.status(400).json({ message: 'You already liked this post' });
+    }
+
+    // Add the user to the likes array
+    post.likes.push(req.user.userId);
+    await post.save();
+
+    res.json({ likes: post.likes.length });
+  } catch (error) {
+    res.status(500).json({ message: 'Error liking post', error });
   }
 };

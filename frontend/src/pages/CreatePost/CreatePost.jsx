@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './CreatePost.css';
+import { BASE_URL } from '../../config';
+
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
@@ -19,7 +21,7 @@ const CreatePost = () => {
 
     try {
       await axios.post(
-        'http://localhost:5000/api/posts',
+        `${BASE_URL}/posts`,
         { title, content },
         { headers: { Authorization:  token } }
       );

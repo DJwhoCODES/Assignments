@@ -5,6 +5,7 @@ import {
   getPostById,
   updatePost,
   deletePost,
+  likePost,
 } from '../controllers/postController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
@@ -24,5 +25,8 @@ router.put('/:id', authMiddleware, updatePost);
 
 // Delete a post (Protected Route)
 router.delete('/:id', authMiddleware, deletePost);
+
+// Add the like route
+router.post('/like/:id', authMiddleware, likePost);
 
 export default router;

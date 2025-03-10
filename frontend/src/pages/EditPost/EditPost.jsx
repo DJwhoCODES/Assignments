@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './EditPost.css';
+import { BASE_URL } from '../../config';
+
 
 const EditPost = () => {
   const { id } = useParams();
@@ -13,7 +15,7 @@ const EditPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/posts/${id}`);
+        const res = await axios.get(`${BASE_URL}/posts/${id}`);
         setTitle(res.data.title);
         setContent(res.data.content);
         setLoading(false);
@@ -35,7 +37,7 @@ const EditPost = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/posts/${id}`,
+        `${BASE_URL}/posts/${id}`,
         { title, content },
         { headers: { Authorization: token } }
       );

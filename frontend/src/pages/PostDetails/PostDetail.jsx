@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './PostDetail.css';
+import { BASE_URL } from '../../config';
+
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -13,7 +15,7 @@ const PostDetail = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/posts/${id}`);
+        const res = await axios.get(`${BASE_URL}/posts/${id}`);
         setPost(res.data);
         setLoading(false);
       } catch (error) {
@@ -39,7 +41,7 @@ const PostDetail = () => {
 
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/posts/${id}`, {
+        await axios.delete(`${BASE_URL}/posts/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert('Post deleted successfully');
