@@ -1,45 +1,169 @@
-.post-card {
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin: 10px 0;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+/* 🌟 Glassmorphic Theme */
+:root {
+  --primary-color: #0da6e7;
+  --bg-color: #eef1f5;
+  --glass-bg: rgba(255, 255, 255, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur: 25px;
+  --text-color: #222;
+  --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease-in-out;
 }
 
+/* 📌 Home Container (Centered) */
+.home-container {
+  width: 90%;
+  max-width: 1200px; /* Adjust max width */
+  margin: 50px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 🏠 Blog Post Layout (Horizontal, Next to Each Other) */
+.post-grid {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping */
+  justify-content: flex-start; /* Align to left */
+  gap: 20px; /* Space between cards */
+  width: 100%;
+}
+
+/* 🎴 Glassmorphic Cards */
+.post-card {
+  width: 300px; /* Set card width */
+  padding: 20px;
+  border-radius: 15px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+/* 🌟 Hover Effect */
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* 📝 Post Title */
+.post-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+/* ✍️ Author */
+.post-card .author {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+/* 🔗 Read More Button */
 .read-more {
   display: inline-block;
-  margin-top: 10px;
-  color: blue;
+  padding: 10px 15px;
+  background: linear-gradient(135deg, #e781f4, #6039ea);
+  color: #fff;
   text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+  text-align: center;
+  align-self: flex-start; /* Align button to the left */
 }
 
+.read-more:hover {
+  background: linear-gradient(135deg, #9640e1, #2239ea);
+}
+
+/* 🛠 Post Actions - Improved Button Layout */
 .post-actions {
+  display: flex;
+  justify-content: space-between; /* Evenly space buttons */
+  gap: 10px;
   margin-top: 10px;
 }
 
-.edit-btn,
-.delete-btn {
-  padding: 8px 12px;
+/* 🎨 Unified Button Styles */
+.edit-btn, .delete-btn {
   border: none;
-  border-radius: 5px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: var(--transition);
+  min-width: 80px;
+  text-align: center;
   cursor: pointer;
-  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* ✅ Edit Button - Elegant Blue */
 .edit-btn {
-  background-color: #007bff;
-  color: white;
+  background: linear-gradient(135deg, #d8edb3, #4ee607);
+  color: green;
 }
 
 .edit-btn:hover {
-  background-color: #0056b3;
+  background: linear-gradient(135deg,#d6e4bd, #c3e7b2);
 }
 
+/* ❌ Delete Button - Classy Red */
 .delete-btn {
-  background-color: red;
-  color: white;
+  background: linear-gradient(135deg, #f4aeaa, #fb040c);
+  color: rgb(93, 4, 4);
 }
 
 .delete-btn:hover {
-  background-color: darkred;
+  background: linear-gradient(135deg, #C1272D, #8A1B22);
+}
+
+/* 🔗 Read More Button - Proper Spacing */
+.read-more {
+  display: block;
+  padding: 5px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 15px;
+  text-align: center;
+  width: 90%;
+  margin-bottom: 12px; /* Creates spacing before Edit/Delete buttons */
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .home-container {
+    margin: 200px auto;
+  }
+
+  .post-grid {
+    justify-content: center; /* Center cards on smaller screens */
+  }
+
+  .post-card {
+    width: 90%;
+    max-width: 350px; /* Adjust width for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container  {
+    margin: 200px auto;
+  }
 }

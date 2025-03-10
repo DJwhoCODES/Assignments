@@ -1,50 +1,129 @@
+/* Navbar.css */
+
+:root {
+  --bg-color: #0f172a;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --border-color: rgba(255, 255, 255, 0.2);
+  --primary-text: #e5e7eb;
+  --secondary-text: #94a3b8;
+  --accent: #6366f1;
+  --hover-accent: #4f46e5;
+  --logout-color: #ef4444;
+  --logout-hover: #dc2626;
+}
+
+/* 🏠 Fixed Navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  max-width: 100vw; /* Prevents overflow */
+  height: 60px; /* Fixed height */
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* 🌟 Add Margin to Content Below Navbar */
+.main-content {
+  margin-top: 80px; /* Ensures content starts below navbar */
+  padding: 20px;
+}
+
+/* 🎨 Logo */
+.nav-left .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.nav-left .logo:hover {
+  color: var(--hover-accent);
+}
+
+/* 🖱️ Navbar Links */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap; /* Prevents overflow */
+}
+
+.username {
+  color: var(--primary-text);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.nav-link {
+  color: var(--primary-text);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+/* 🚀 Logout Button */
+.logout-button {
+  background: var(--logout-color);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.logout-button:hover {
+  background: var(--logout-hover);
+  transform: scale(1.05);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: #007bff;
-    color: white;
+    padding: 1rem;
+    text-align: center;
+    height: auto;
   }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-  }
-  
+
   .nav-right {
-    display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
   }
-  
-  .nav-link {
-    color: white;
-    text-decoration: none;
-    margin-right: 1rem;
-    font-size: 1rem;
-  }
-  
-  .nav-link:hover {
-    text-decoration: underline;
-  }
-  
-  .username {
-    margin-right: 1rem;
-    font-weight: bold;
-  }
-  
+
   .logout-button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    width: 100%;
+    max-width: 200px;
   }
-  
-  .logout-button:hover {
-    background-color: #c82333;
+
+  .nav-link {
+    display: block;
+    width: 100%;
+    text-align: center;
   }
-  
+
+  /* Ensure mobile content starts below navbar */
+  .main-content {
+    margin-top: 100px;
+  }
+}

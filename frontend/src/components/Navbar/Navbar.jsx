@@ -16,12 +16,12 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-left">
-        <Link to="/" className="logo">SimpleBlog</Link>
+        <Link to="/" className="logo">DJwhoCODES</Link>
       </div>
       <div className="nav-right">
         {user ? (
           <>
-            <span className="username">Hello, {user.username}</span>
+            <span className="username">Hello, {user}</span>
             <Link to="/create" className="nav-link">Create Post</Link>
             <button onClick={handleLogout} className="logout-button">Logout</button>
           </>

@@ -1,46 +1,123 @@
+/* EditPost.css */
+
+:root {
+  --primary-bg: #121212;
+  --secondary-bg: #1e1e1e;
+  --primary-text: #e0e0e0;
+  --secondary-text: #b0b0b0;
+  --accent: #bb86fc;
+  --hover-accent: #9b6ef3;
+  --input-bg: #2a2a2a;
+  --input-border: #3a3a3a;
+  --button-bg: #6200ea;
+  --button-hover: #3700b3;
+}
+
 .edit-post-container {
-    max-width: 500px;
-    margin: 2rem auto;
-    padding: 2rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  max-width: 600px;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--secondary-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px auto;
+}
+
+.edit-post-container h2 {
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+/* Ensuring form elements align properly */
+.edit-post-container form {
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.edit-post-container input,
+.edit-post-container textarea {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--primary-text);
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s ease-in-out;
+}
+
+.edit-post-container input:focus,
+.edit-post-container textarea:focus {
+  border-color: var(--accent);
+}
+
+.edit-post-container textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+/* Button styling */
+.edit-post-container button {
+  width: 100%;
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-post-container button:hover {
+  background-color: var(--button-hover);
+}
+
+/* Loading text style */
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--secondary-text);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .edit-post-container {
+    width: 90%;
+    padding: 1.5rem;
+    margin: 250px auto;
   }
-  
-  .edit-post-container h2 {
-    margin-bottom: 1rem;
-  }
-  
-  .edit-post-container form {
-    display: flex;
-    flex-direction: column;
-  }
-  
   .edit-post-container input,
-  .edit-post-container textarea {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .edit-post-container textarea {
-    height: 150px;
-    resize: none;
-  }
-  
+  .edit-post-container textarea,
   .edit-post-container button {
-    background-color: #ffc107;
-    color: black;
+    font-size: 0.9rem;
     padding: 0.7rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
   }
-  
-  .edit-post-container button:hover {
-    background-color: #e0a800;
+}
+
+@media (max-width: 480px) {
+  .edit-post-container {
+    width: 95%;
+    padding: 1rem;
+    margin: 200px auto;
   }
-  
+  .edit-post-container h2 {
+    font-size: 1.2rem;
+  }
+  .edit-post-container input,
+  .edit-post-container textarea,
+  .edit-post-container button {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+}
